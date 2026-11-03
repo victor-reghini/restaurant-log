@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Production build
+dist/
+build/
+*.tsbuildinfo
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# Mobile / IDE
+.expo/
+.vscode/
+
+# Antigravity & IDE agent configs
+.cli-runner
+.cursor/
+.agents/
+.github/
+.windsurfrules
+.clinerules
+.cursorrules
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+runs/
