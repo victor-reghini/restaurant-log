@@ -1,0 +1,24 @@
+services:
+  postgres:
+    container_name: restolog-postgres
+    image: postgis/postgis:15-3.3-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: restolog
+    ports:
+      - "5432:5432"
+    volumes:
+      # Automatically initializes schema, PostGIS extensions, and seed data on first boot
+      - ./supabase/init-db.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d restolog"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
+

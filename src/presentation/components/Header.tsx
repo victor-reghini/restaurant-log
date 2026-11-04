@@ -34,8 +34,6 @@ export const Header: React.FC<HeaderProps> = ({
                 <span className={`inline-flex items-center gap-1 text-[10px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wide ${
                   currentEnvironment === 'production'
                     ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
-                    : currentEnvironment === 'test'
-                    ? 'bg-purple-100 text-purple-800 border border-purple-300'
                     : 'bg-amber-100 text-amber-800 border border-amber-300'
                 }`}>
                   {currentEnvironment}
