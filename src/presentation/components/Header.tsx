@@ -40,7 +40,11 @@ export const Header: React.FC<HeaderProps> = ({
                 </span>
                 <span className="inline-flex items-center gap-1 text-[11px] font-medium px-2 py-0.5 rounded-full bg-stone-100 text-stone-600 border border-stone-200">
                   <Database className="w-3 h-3 text-stone-500" />
-                  {currentProvider === 'supabase' ? 'Supabase' : 'Modo Mock'}
+                  {currentProvider === 'supabase'
+                    ? 'Supabase'
+                    : currentProvider === 'postgres'
+                    ? 'PostgreSQL (Docker)'
+                    : 'Modo Mock'}
                 </span>
               </div>
               <p className="text-xs text-stone-500 hidden sm:block">Curadoria de cardápios, buffets e favoritos</p>

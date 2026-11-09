@@ -230,13 +230,28 @@ ALTER TABLE public.reviews ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.favorites ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.restaurant_suggestions ENABLE ROW LEVEL SECURITY;
 
+DROP POLICY IF EXISTS "Public read categories" ON public.categories;
 CREATE POLICY "Public read categories" ON public.categories FOR SELECT USING (true);
+
+DROP POLICY IF EXISTS "Public read pricing models" ON public.pricing_models;
 CREATE POLICY "Public read pricing models" ON public.pricing_models FOR SELECT USING (true);
+
+DROP POLICY IF EXISTS "Public read verified restaurants" ON public.restaurants;
 CREATE POLICY "Public read verified restaurants" ON public.restaurants FOR SELECT USING (is_verified = true);
+
+DROP POLICY IF EXISTS "Public read menu items" ON public.menu_items;
 CREATE POLICY "Public read menu items" ON public.menu_items FOR SELECT USING (true);
+
+DROP POLICY IF EXISTS "Public read reviews" ON public.reviews;
 CREATE POLICY "Public read reviews" ON public.reviews FOR SELECT USING (true);
+
+DROP POLICY IF EXISTS "Anyone can create reviews" ON public.reviews;
 CREATE POLICY "Anyone can create reviews" ON public.reviews FOR INSERT WITH CHECK (true);
+
+DROP POLICY IF EXISTS "Anyone can submit suggestions" ON public.restaurant_suggestions;
 CREATE POLICY "Anyone can submit suggestions" ON public.restaurant_suggestions FOR INSERT WITH CHECK (true);
+
+DROP POLICY IF EXISTS "Users can manage favorites" ON public.favorites;
 CREATE POLICY "Users can manage favorites" ON public.favorites FOR ALL USING (true);
 
 -- ------------------------------------------------------------------------------
